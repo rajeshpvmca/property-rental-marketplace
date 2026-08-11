@@ -1,3 +1,12 @@
+// Preloader Logic
+window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        setTimeout(() => {
+            preloader.classList.add('loaded');
+        }, 2000);
+    }
+});
 document.addEventListener('DOMContentLoaded', async () => {
     // 0. Load Header and Footer
     await loadComponents();
@@ -216,3 +225,4 @@ function initCounters() {
         observer.observe(counter);
     });
 }
+
