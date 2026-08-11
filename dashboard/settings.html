@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Account Settings</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../css/style.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: transparent;
+            color: #ffffff;
+            padding: 1.5rem;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism Classes */
+        .glass-card {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Custom Toggle Switch */
+        .form-check-input:checked {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .form-switch .form-check-input {
+            width: 3em;
+            height: 1.5em;
+            margin-top: 0.1em;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.1);
+            box-shadow: none !important;
+            cursor: pointer;
+        }
+
+        .form-switch .form-check-input:checked {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            box-shadow: 0 0 15px rgba(6, 182, 212, 0.4) !important;
+        }
+
+        .setting-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .setting-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .setting-text h6 {
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+        }
+
+        .setting-text p {
+            margin-bottom: 0;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .nav-pills .nav-link {
+            color: rgba(255, 255, 255, 0.7);
+            border-radius: 12px;
+            padding: 0.8rem 1.5rem;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .nav-pills .nav-link.active,
+        .nav-pills .nav-link:hover {
+            background-color: rgba(6, 182, 212, 0.15);
+            color: var(--primary-color);
+        }
+
+        .payment-card {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: transform 0.3s;
+        }
+
+        .payment-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary-color);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid px-0">
+        <div class="d-flex align-items-center mb-4 gap-3"> <span class="material-symbols-outlined fs-2 text-primary"
+                style="font-variation-settings: 'FILL' 1;">settings</span>
+            <h2 class="fw-bold mb-0" style="font-family: 'Montserrat', sans-serif;">Settings</h2>
+        </div>
+        <div class="row g-4"> <!-- Left Sidebar Navigation -->
+            <div class="col-12 col-md-4 col-lg-3">
+                <div class="glass-card p-3">
+                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <button class="nav-link active d-flex align-items-center gap-2 mb-2 text-start"
+                            id="v-pills-notifications-tab" data-bs-toggle="pill" data-bs-target="#v-pills-notifications"
+                            type="button" role="tab"> <span class="material-symbols-outlined">notifications</span>
+                            Notifications </button> <button
+                            class="nav-link d-flex align-items-center gap-2 mb-2 text-start" id="v-pills-billing-tab"
+                            data-bs-toggle="pill" data-bs-target="#v-pills-billing" type="button" role="tab"> <span
+                                class="material-symbols-outlined">credit_card</span> Billing & Payouts </button> <button
+                            class="nav-link d-flex align-items-center gap-2 mb-2 text-start" id="v-pills-privacy-tab"
+                            data-bs-toggle="pill" data-bs-target="#v-pills-privacy" type="button" role="tab"> <span
+                                class="material-symbols-outlined">security</span> Privacy </button> </div>
+                </div>
+            </div> <!-- Right Content Area -->
+            <div class="col-12 col-md-8 col-lg-9">
+                <div class="tab-content" id="v-pills-tabContent"> <!-- Notifications Tab -->
+                    <div class="tab-pane fade show active" id="v-pills-notifications" role="tabpanel">
+                        <div class="glass-card">
+                            <h5 class="fw-bold mb-4 border-bottom border-secondary border-opacity-25 pb-3">Email
+                                Notifications</h5>
+                            <div class="setting-item">
+                                <div class="setting-text">
+                                    <h6>New Messages</h6>
+                                    <p>Get notified when a landlord or tenant messages you.</p>
+                                </div>
+                                <div class="form-check form-switch"> <input class="form-check-input" type="checkbox"
+                                        checked> </div>
+                            </div>
+                            <div class="setting-item">
+                                <div class="setting-text">
+                                    <h6>Application Updates</h6>
+                                    <p>Receive emails when your rental application status changes.</p>
+                                </div>
+                                <div class="form-check form-switch"> <input class="form-check-input" type="checkbox"
+                                        checked> </div>
+                            </div>
+                            <div class="setting-item">
+                                <div class="setting-text">
+                                    <h6>Rent Reminders</h6>
+                                    <p>Get an email reminder 3 days before rent is due.</p>
+                                </div>
+                                <div class="form-check form-switch"> <input class="form-check-input" type="checkbox"
+                                        checked> </div>
+                            </div>
+                            <div class="setting-item">
+                                <div class="setting-text">
+                                    <h6>Marketing & Promotions</h6>
+                                    <p>Receive weekly digests of new properties in your area.</p>
+                                </div>
+                                <div class="form-check form-switch"> <input class="form-check-input" type="checkbox">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="glass-card">
+                            <h5 class="fw-bold mb-4 border-bottom border-secondary border-opacity-25 pb-3">Push
+                                Notifications</h5>
+                            <div class="setting-item">
+                                <div class="setting-text">
+                                    <h6>Allow Push Notifications</h6>
+                                    <p>Receive instant browser alerts for important updates.</p>
+                                </div>
+                                <div class="form-check form-switch"> <input class="form-check-input" type="checkbox">
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- Billing Tab -->
+                    <div class="tab-pane fade" id="v-pills-billing" role="tabpanel">
+                        <div class="glass-card">
+                            <div
+                                class="d-flex justify-content-between align-items-center mb-4 border-bottom border-secondary border-opacity-25 pb-3">
+                                <h5 class="fw-bold mb-0">Payment Methods</h5> <button
+                                    class="btn btn-sm btn-custom rounded-pill px-3 fw-bold">+ Add Card</button>
+                            </div>
+                            <div class="row g-3 mb-4">
+                                <div class="col-12 col-xl-6">
+                                    <div class="payment-card border-primary"> <span
+                                            class="material-symbols-outlined fs-1 text-primary">credit_card</span>
+                                        <div class="flex-grow-1">
+                                            <h6 class="mb-1 fw-bold">Visa ending in 4242</h6>
+                                            <p class="mb-0 small text-light opacity-75">Expires 12/26</p>
+                                        </div> <span
+                                            class="badge bg-primary bg-opacity-25 text-primary border border-primary rounded-pill">Default</span>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-xl-6">
+                                    <div class="payment-card"> <span
+                                            class="material-symbols-outlined fs-1 text-light opacity-50">account_balance</span>
+                                        <div class="flex-grow-1">
+                                            <h6 class="mb-1 fw-bold">Chase Checking</h6>
+                                            <p class="mb-0 small text-light opacity-75">Ending in 8899</p>
+                                        </div> <button class="btn btn-link text-danger p-0 shadow-none"><span
+                                                class="material-symbols-outlined">delete</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <h5 class="fw-bold mb-3 border-bottom border-secondary border-opacity-25 pb-3 pt-3">Billing
+                                History</h5>
+                            <div class="table-responsive">
+                                <table class="table table-dark table-hover table-borderless align-middle mb-0"
+                                    style="background: transparent;">
+                                    <thead>
+                                        <tr class="text-uppercase small opacity-50 border-bottom border-secondary">
+                                            <th>Date</th>
+                                            <th>Description</th>
+                                            <th>Amount</th>
+                                            <th>Status</th>
+                                            <th>Receipt</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Aug 01, 2026</td>
+                                            <td>August Rent Payment</td>
+                                            <td class="fw-bold">$1,850.00</td>
+                                            <td><span
+                                                    class="badge bg-success bg-opacity-25 text-success rounded-pill px-3">Paid</span>
+                                            </td>
+                                            <td><a href="#" class="text-primary"><span
+                                                        class="material-symbols-outlined">download</span></a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Jul 01, 2026</td>
+                                            <td>July Rent Payment</td>
+                                            <td class="fw-bold">$1,850.00</td>
+                                            <td><span
+                                                    class="badge bg-success bg-opacity-25 text-success rounded-pill px-3">Paid</span>
+                                            </td>
+                                            <td><a href="#" class="text-primary"><span
+                                                        class="material-symbols-outlined">download</span></a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div> <!-- Privacy Tab -->
+                    <div class="tab-pane fade" id="v-pills-privacy" role="tabpanel">
+                        <div class="glass-card">
+                            <h5 class="fw-bold mb-4 border-bottom border-secondary border-opacity-25 pb-3">Privacy
+                                Settings</h5>
+                            <div class="setting-item">
+                                <div class="setting-text">
+                                    <h6>Public Profile</h6>
+                                    <p>Allow other users to see your basic profile information.</p>
+                                </div>
+                                <div class="form-check form-switch"> <input class="form-check-input" type="checkbox"
+                                        checked> </div>
+                            </div>
+                            <div class="setting-item">
+                                <div class="setting-text">
+                                    <h6>Show Contact Info</h6>
+                                    <p>Display your phone number on your listings or applications.</p>
+                                </div>
+                                <div class="form-check form-switch"> <input class="form-check-input" type="checkbox">
+                                </div>
+                            </div>
+                            <div class="setting-item border-0 pb-0">
+                                <div class="setting-text">
+                                    <h6>Two-Factor Authentication</h6>
+                                    <p>Require a verification code when logging in from a new device.</p>
+                                </div> <button class="btn btn-custom btn-sm rounded-pill fw-bold px-3">Enable
+                                    2FA</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

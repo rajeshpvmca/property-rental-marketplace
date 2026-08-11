@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages</title> <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        body {
+            background: transparent;
+            color: #fff;
+            padding: 20px;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .chat-container {
+            height: calc(100vh - 80px);
+        }
+
+        .contacts-list {
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        .contact-item {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .contact-item:hover,
+        .contact-item.active {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .chat-area {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .chat-header {
+            padding: 15px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .chat-messages {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .message {
+            max-width: 75%;
+            margin-bottom: 15px;
+            padding: 12px 16px;
+            border-radius: 18px;
+            clear: both;
+        }
+
+        .message.received {
+            background: rgba(255, 255, 255, 0.1);
+            float: left;
+            border-bottom-left-radius: 4px;
+        }
+
+        .message.sent {
+            background: #0d6efd;
+            float: right;
+            border-bottom-right-radius: 4px;
+        }
+
+        .chat-input {
+            padding: 15px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .custom-input {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            border-radius: 24px;
+        }
+
+        .custom-input:focus {
+            background: rgba(0, 0, 0, 0.3);
+            border-color: #0d6efd;
+            color: #fff;
+            box-shadow: none;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid p-0">
+        <div class="glass-card chat-container row g-0"> <!-- Contacts -->
+            <div class="col-md-4 col-lg-3 contacts-list d-none d-md-block">
+                <div class="p-3 border-bottom border-secondary border-opacity-25">
+                    <h5 class="mb-0 fw-light">Messages</h5>
+                </div>
+                <div class="contact-item active d-flex align-items-center"> <img src="https://i.pravatar.cc/150?img=11"
+                        alt="Avatar" class="avatar me-3">
+                    <div class="flex-grow-1 overflow-hidden">
+                        <div class="d-flex justify-content-between align-items-baseline">
+                            <h6 class="mb-0 text-truncate">Sarah Jenkins</h6> <small class="text-muted">10:42 AM</small>
+                        </div>
+                        <p class="text-muted small mb-0 text-truncate">The lease agreement is ready for you to sign.</p>
+                    </div>
+                </div>
+                <div class="contact-item d-flex align-items-center"> <img src="https://i.pravatar.cc/150?img=33"
+                        alt="Avatar" class="avatar me-3">
+                    <div class="flex-grow-1 overflow-hidden">
+                        <div class="d-flex justify-content-between align-items-baseline">
+                            <h6 class="mb-0 text-truncate">Property Management Inc.</h6> <small
+                                class="text-muted">Yesterday</small>
+                        </div>
+                        <p class="text-muted small mb-0 text-truncate">Maintenance request #452 has been resolved.</p>
+                    </div>
+                </div>
+            </div> <!-- Chat Area -->
+            <div class="col-12 col-md-8 col-lg-9 chat-area">
+                <div class="chat-header d-flex align-items-center"> <button
+                        class="btn btn-sm btn-link text-light d-md-none me-2 p-0"><span
+                            class="material-symbols-outlined">arrow_back</span></button> <img
+                        src="https://i.pravatar.cc/150?img=11" alt="Avatar" class="avatar me-3"
+                        style="width: 40px; height: 40px;">
+                    <div>
+                        <h6 class="mb-0">Sarah Jenkins</h6> <small class="text-success"><span
+                                class="material-symbols-outlined fs-6 align-text-bottom text-success"
+                                style="font-size: 10px;">circle</span> Online</small>
+                    </div>
+                    <div class="ms-auto"> <button class="btn btn-sm btn-link text-light"><span
+                                class="material-symbols-outlined">info</span></button> </div>
+                </div>
+                <div class="chat-messages">
+                    <div class="text-center text-muted small mb-4">Today</div>
+                    <div class="message received"> Hi! I received your application for the Downtown Apartment.
+                        Everything looks great. <div class="text-end small opacity-50 mt-1">10:30 AM</div>
+                    </div>
+                    <div class="message sent"> That's wonderful news! Thank you. What are the next steps? <div
+                            class="text-end small opacity-75 mt-1">10:35 AM</div>
+                    </div>
+                    <div class="message received"> I will be generating the lease agreement shortly. Once it's ready,
+                        you'll receive a notification to review and sign it digitally. <div
+                            class="text-end small opacity-50 mt-1">10:38 AM</div>
+                    </div>
+                    <div class="message received"> The lease agreement is ready for you to sign. <div
+                            class="text-end small opacity-50 mt-1">10:42 AM</div>
+                    </div>
+                </div>
+                <div class="chat-input">
+                    <form class="d-flex gap-2" onsubmit="event.preventDefault();"> <button
+                            class="btn btn-link text-muted px-2"><span
+                                class="material-symbols-outlined">attach_file</span></button> <input type="text"
+                            class="form-control custom-input" placeholder="Type a message..."> <button
+                            class="btn btn-custom rounded-circle p-2 d-flex align-items-center justify-content-center"
+                            style="width: 46px; height: 46px;"> <span class="material-symbols-outlined">send</span>
+                        </button> </form>
+                </div>
+            </div>
+        </div>
+    </div> <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
