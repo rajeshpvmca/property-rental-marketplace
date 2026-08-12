@@ -1068,3 +1068,100 @@ html, body {
         font-size: 1.5rem;
     }
 }
+
+/* Full Screen Mobile Menu Overlay */
+@media (max-width: 991.98px) {
+    .navbar-collapse.collapse:not(.show) {
+        display: flex !important;
+        opacity: 0;
+        pointer-events: none;
+        visibility: hidden;
+    }
+    
+    .navbar-collapse.collapsing {
+        display: flex !important;
+        height: 100vh !important;
+        opacity: 0.5;
+        transition: opacity 0.3s ease;
+    }
+    
+    .navbar-collapse.show {
+        display: flex !important; /* Fix: Override Bootstrap's display: block */
+        opacity: 1;
+        pointer-events: auto;
+        visibility: visible;
+    }
+
+    .navbar-collapse {
+        position: fixed !important;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh !important;
+        background: rgba(2, 6, 23, 0.98);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        z-index: 1040;
+        flex-direction: column;
+        justify-content: center; /* Center items vertically */
+        align-items: center;
+        transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+        padding-top: 60px; /* Buffer to ensure it never overlaps the logo */
+    }
+
+    .navbar-toggler {
+        z-index: 1050;
+        border: none;
+        position: relative;
+    }
+    
+    .navbar-toggler:focus {
+        box-shadow: none;
+    }
+    
+    .navbar-brand {
+        z-index: 1050 !important;
+        position: relative;
+    }
+
+    .navbar-nav {
+        width: 100%;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        display: flex !important;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1.2rem; /* Perfect spacing */
+    }
+
+    .navbar-nav .nav-link {
+        font-size: 1.6rem !important;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.7) !important;
+        transition: all 0.3s ease;
+        padding: 8px 0 !important;
+    }
+    
+    .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active {
+        color: #fff !important;
+        transform: scale(1.05);
+    }
+
+    .navbar-nav .nav-item {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .navbar-nav .btn-custom {
+        font-size: 1.2rem !important;
+        padding: 12px 40px !important;
+        margin-top: 1rem !important;
+        display: inline-block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        width: auto;
+    }
+}
