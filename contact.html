@@ -67,15 +67,18 @@
                             class="badge bg-glass border border-secondary text-primary px-3 py-2 rounded-pill mb-4 shadow-sm fw-bold letter-spacing-1"><i
                                 class="fa-solid fa-play me-2"></i> CONTACT</span>
                         <h2 class="display-5 fw-bold mb-5 text-white">Send us a Message</h2>
-                        <form class="row g-4">
+                        <form action="404.html" class="row g-4">
                             <div class="col-md-6"> <label class="form-label text-muted small fw-bold">Full Name</label>
                                 <input type="text"
                                     class="form-control bg-dark border-secondary text-white py-3 shadow-none rounded-3"
-                                    placeholder="Julianne Smith"> </div>
+                                    placeholder="Julianne Smith" required pattern="[A-Za-z\s]+"
+                     oninput="
+                       this.value = this.value.replace(/[^A-Za-z\s]/g, '')
+                     "> </div>
                             <div class="col-md-6"> <label class="form-label text-muted small fw-bold">Email
                                     Address</label> <input type="email"
                                     class="form-control bg-dark border-secondary text-white py-3 shadow-none rounded-3"
-                                    placeholder="hello@curation.com"> </div>
+                                    placeholder="hello@gmail.com" required> </div>
                             <div class="col-12"> <label class="form-label text-muted small fw-bold">Subject</label>
                                 <select
                                     class="form-select bg-dark border-secondary text-white py-3 shadow-none rounded-3 cursor-pointer">
@@ -86,7 +89,7 @@
                             <div class="col-12"> <label class="form-label text-muted small fw-bold">Message</label>
                                 <textarea
                                     class="form-control bg-dark border-secondary text-white py-3 shadow-none rounded-3"
-                                    rows="6" placeholder="How can we help you today?"></textarea> </div>
+                                    rows="6" placeholder="How can we help you today?" required></textarea> </div>
                             <div class="col-12 mt-4"> <button type="submit"
                                     class="btn btn-custom w-100 py-3 rounded-pill fw-bold letter-spacing-1 shadow-cyan hover-elevate transition-all fs-5">Send
                                     Message</button> </div>

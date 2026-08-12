@@ -162,7 +162,10 @@
                         <div class="row g-4 mb-4">
                             <div class="col-md-6">
                                 <label class="form-label text-light opacity-75 small fw-bold letter-spacing-1 text-uppercase">Full Name</label>
-                                <input class="form-control bg-dark border-secondary text-white py-3 shadow-none rounded-3" type="text" id="name" placeholder="John Doe" required>
+                                <input class="form-control bg-dark border-secondary text-white py-3 shadow-none rounded-3" type="text" id="name" placeholder="John Doe" required pattern="[A-Za-z\s]+"
+                     oninput="
+                       this.value = this.value.replace(/[^A-Za-z\s]/g, '')
+                     ">
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label text-light opacity-75 small fw-bold letter-spacing-1 text-uppercase">Email Address</label>
