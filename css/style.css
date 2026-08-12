@@ -1165,3 +1165,14 @@ html, body {
         width: auto;
     }
 }
+
+/* Global Form Control Focus Fix for Dark Theme */
+.form-control:focus,
+.form-select:focus,
+textarea.form-control:focus {
+    background-color: rgba(30, 41, 59, 0.9) !important;
+    color: #ffffff !important;
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.3) !important;
+    outline: none !important;
+}
