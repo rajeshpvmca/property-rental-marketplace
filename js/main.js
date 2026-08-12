@@ -1,10 +1,35 @@
-// Preloader Logic
+// Premium Preloader Logic with CSS Particles
+document.addEventListener('DOMContentLoaded', () => {
+    const particleContainer = document.getElementById('preloader-particles');
+    if (particleContainer) {
+        // Generate 40 particles for the background
+        for (let i = 0; i < 40; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('css-particle');
+            
+            // Randomize position, size, and animation duration
+            const size = Math.random() * 4 + 2; // 2px to 6px
+            const left = Math.random() * 100; // 0% to 100%
+            const duration = Math.random() * 2 + 2; // 2s to 4s
+            const delay = Math.random() * 2; // 0s to 2s
+            
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            particle.style.left = left + '%';
+            particle.style.animationDuration = duration + 's';
+            particle.style.animationDelay = delay + 's';
+            
+            particleContainer.appendChild(particle);
+        }
+    }
+});
+
 window.addEventListener('load', () => {
     const preloader = document.getElementById('preloader');
     if (preloader) {
         setTimeout(() => {
             preloader.classList.add('loaded');
-        }, 2000);
+        }, 2000); // 2 second display
     }
 });
 document.addEventListener('DOMContentLoaded', async () => {
@@ -225,4 +250,5 @@ function initCounters() {
         observer.observe(counter);
     });
 }
+
 
